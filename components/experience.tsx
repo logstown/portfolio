@@ -1,5 +1,7 @@
 import { Badge } from "@/components/ui/badge";
-import { Building2, Calendar } from "lucide-react";
+import { cn } from "@/lib/utils";
+import { Building2, Calendar, Mountain } from "lucide-react";
+import Link from "next/link";
 
 interface ExperienceItemProps {
   title: string;
@@ -18,12 +20,27 @@ const ExperienceItem = ({ title, company, period, achievements, technologies }: 
       </div>
 
       {/* Content */}
-      <div className="space-y-3">
+      <div className={cn("space-y-3", company === "Applachian Trail" && "bg-green-600/5 p-4 rounded-lg")}>
         <div className="flex items-center gap-3">
           <div className="flex-shrink-0 size-9 bg-accent rounded-full flex items-center justify-center">
-            <Building2 className="size-5 text-muted-foreground" />
+            {company === "Applachian Trail" ? (
+              <Mountain className="size-5 text-muted-foreground" />
+            ) : (
+              <Building2 className="size-5 text-muted-foreground" />
+            )}
           </div>
-          <span className="text-lg font-semibold">{company}</span>
+          {company === "Applachian Trail" ? (
+            <Link
+              href="https://ga2me.blogspot.com"
+              target="_blank"
+              rel="nofollow no-referrer"
+              className="text-lg font-semibold hover:text-green-600 underline"
+            >
+              Applachian Trail
+            </Link>
+          ) : (
+            <span className="text-lg font-semibold">{company}</span>
+          )}
         </div>
         <div>
           <h3 className="text-xl font-medium">{title}</h3>
@@ -60,9 +77,6 @@ const Experience = () => {
         "Initially hired as sole front-end developer. Scaffolded UI in AngularJS, then partially upgraded to Angular 2+ creating a hybrid.",
         "Contributed to home-grown UI framework (ACE)",
       ],
-      images: [
-        // optional: leave the array empty if you don't want to display images
-      ],
       technologies: ["AngularJS", "Angular 2+", "JavaScript", "TypeScript", "CSS", "HTML", "D3.js"],
     },
     {
@@ -72,32 +86,6 @@ const Experience = () => {
       achievements: [
         "Sole front-end developer of a web-app called uX. Despite its nondescript title, uX was actually a powerful, enterprise-level, SaaS web app that sought to correlate business and IT metrics, allowing high level executives to draw conclusions as to how their IT performance was affecting their revenue and vice versa.",
         "Made heavy use of AngularJS and D3.js, as well as a host of other UI javascript libraries",
-      ],
-      images: [
-        {
-          src: "/images/work/orsyp-1.png",
-          alt: "uX Landing page",
-          width: 16,
-          height: 9,
-        },
-        {
-          src: "/images/work/orsyp-2.png",
-          alt: "uX Graph",
-          width: 16,
-          height: 9,
-        },
-        {
-          src: "/images/work/orsyp-3.png",
-          alt: "uX Graph",
-          width: 16,
-          height: 9,
-        },
-        {
-          src: "/images/work/orsyp-4.png",
-          alt: "uX Calendars",
-          width: 16,
-          height: 9,
-        },
       ],
       technologies: ["AngularJS", "JavaScript", "CSS", "HTML", "D3.js"],
     },
@@ -110,7 +98,6 @@ const Experience = () => {
         "Wrote SQL to query Meditech data repository for SSRS development",
         "Regular weekly travel to and from national headquarters in Nashville, TN (2010--2011) ",
       ],
-      images: [],
       technologies: ["SQL", "SSRS", "Meditech"],
     },
     {
@@ -121,8 +108,14 @@ const Experience = () => {
         "Experience in software development life cycle from analysis and design to coding and testing for the Admitting Outpatient application (ADO) for Brigham and Women`s Hospital.",
         "Provided 24-hour on-call support for ADO over week-long periods and fixed priority technical issues",
       ],
-      images: [],
       technologies: ["Caché ObjectScript"],
+    },
+    {
+      company: "Applachian Trail",
+      period: "2008",
+      title: "Thru-Hiker",
+      achievements: ["Hiked 2176 miles from Georgia to Maine", "Took 6 months to complete", "Slept in the woods"],
+      technologies: ["Backpack", "Tent", "Sleeping Bag"],
     },
     {
       company: "Meditech",
@@ -133,7 +126,6 @@ const Experience = () => {
         "Developed projects for requested enhancements and fixed issues",
         "Created technical specifications and wrote code based on specifications",
       ],
-      images: [],
       technologies: ["MIIS", "MAGIC"],
     },
   ];
