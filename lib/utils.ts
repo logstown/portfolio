@@ -87,7 +87,6 @@ export const technologies = [
     name: "Lodash",
     icon: SiLodash,
     color: SiLodashHex,
-    isCurrent: true,
   },
   {
     name: "React Query",

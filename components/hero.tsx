@@ -23,7 +23,7 @@ const Hero = () => {
         <h1 className="mt-6 text-4xl sm:text-5xl md:text-6xl font-bold !leading-[1.2] tracking-tight">Logan Joecks</h1>
         <Badge variant="secondary" className="rounded-full border-none mt-4">
           <Zap className="fill-current" />
-          Fullstack Web Developer
+          Web Developer
         </Badge>
         <p className="mt-6 text-[17px] md:text-lg">
           Hey there! I&apos;m a John Doe, a Full Stack Developer who loves building cool and scalable web experiences. From

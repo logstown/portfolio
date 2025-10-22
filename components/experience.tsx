@@ -5,17 +5,11 @@ interface ExperienceItemProps {
   title: string;
   company: string;
   period: string;
-  description: string;
+  achievements: string[];
   technologies: string[];
 }
 
-const ExperienceItem = ({
-  title,
-  company,
-  period,
-  description,
-  technologies,
-}: ExperienceItemProps) => {
+const ExperienceItem = ({ title, company, period, achievements, technologies }: ExperienceItemProps) => {
   return (
     <div className="relative pl-8 not-last:pb-12">
       {/* Timeline line */}
@@ -38,7 +32,11 @@ const ExperienceItem = ({
             <span>{period}</span>
           </div>
         </div>
-        <p className="text-muted-foreground">{description}</p>
+        <ul className="text-muted-foreground list-disc list-inside ml-6 [&>li]:mt-2">
+          {achievements.map((item) => (
+            <li key={item}>{item}</li>
+          ))}
+        </ul>
         <div className="flex flex-wrap gap-2">
           {technologies.map((tech) => (
             <Badge key={tech} variant="secondary" className="rounded-full">
@@ -52,30 +50,91 @@ const ExperienceItem = ({
 };
 
 const Experience = () => {
-  const experiences = [
+  const work = [
     {
-      title: "Senior Full Stack Developer",
-      company: "TechCorp Solutions",
-      period: "2021 - Present",
-      description:
-        "Led the development of enterprise-scale web applications, mentored junior developers, and implemented best practices for code quality and performance optimization.",
-      technologies: ["React", "Node.js", "TypeScript", "AWS", "MongoDB"],
+      company: "Ryan LLC",
+      period: "2014 - Present",
+      title: "Senior Front-end Developer",
+      achievements: [
+        "Develop UI of enterprise-level property tax SaaS",
+        "Initially hired as sole front-end developer. Scaffolded UI in AngularJS, then partially upgraded to Angular 2+ creating a hybrid.",
+        "Contributed to home-grown UI framework (ACE)",
+      ],
+      images: [
+        // optional: leave the array empty if you don't want to display images
+      ],
+      technologies: ["AngularJS", "Angular 2+", "JavaScript", "TypeScript", "CSS", "HTML", "D3.js"],
     },
     {
-      title: "Full Stack Developer",
-      company: "Digital Innovations Inc",
-      period: "2019 - 2021",
-      description:
-        "Developed and maintained multiple client projects, implemented responsive designs, and integrated third-party APIs for enhanced functionality.",
-      technologies: ["React", "Express.js", "PostgreSQL", "Docker", "Redis"],
+      company: "Orsyp Software (now Automic)",
+      period: "2013 - 2014",
+      title: "Front-end Developer",
+      achievements: [
+        "Sole front-end developer of a web-app called uX. Despite its nondescript title, uX was actually a powerful, enterprise-level, SaaS web app that sought to correlate business and IT metrics, allowing high level executives to draw conclusions as to how their IT performance was affecting their revenue and vice versa.",
+        "Made heavy use of AngularJS and D3.js, as well as a host of other UI javascript libraries",
+      ],
+      images: [
+        {
+          src: "/images/work/orsyp-1.png",
+          alt: "uX Landing page",
+          width: 16,
+          height: 9,
+        },
+        {
+          src: "/images/work/orsyp-2.png",
+          alt: "uX Graph",
+          width: 16,
+          height: 9,
+        },
+        {
+          src: "/images/work/orsyp-3.png",
+          alt: "uX Graph",
+          width: 16,
+          height: 9,
+        },
+        {
+          src: "/images/work/orsyp-4.png",
+          alt: "uX Calendars",
+          width: 16,
+          height: 9,
+        },
+      ],
+      technologies: ["AngularJS", "JavaScript", "CSS", "HTML", "D3.js"],
     },
     {
-      title: "Frontend Developer",
-      company: "WebTech Studios",
-      period: "2018 - 2019",
-      description:
-        "Created responsive and interactive user interfaces, collaborated with designers, and optimized application performance.",
-      technologies: ["React", "JavaScript", "SASS", "Webpack", "Jest"],
+      company: "Vision Consulting LLC",
+      period: "2010 - 2013",
+      title: "Programmer",
+      achievements: [
+        "Developed extracts and NPR reports for various clients using NPR report-writer (proprietary Meditech software)",
+        "Wrote SQL to query Meditech data repository for SSRS development",
+        "Regular weekly travel to and from national headquarters in Nashville, TN (2010--2011) ",
+      ],
+      images: [],
+      technologies: ["SQL", "SSRS", "Meditech"],
+    },
+    {
+      company: "Partners HealthCare",
+      period: "2009 - 2010",
+      title: "Programmer Analyst",
+      achievements: [
+        "Experience in software development life cycle from analysis and design to coding and testing for the Admitting Outpatient application (ADO) for Brigham and Women`s Hospital.",
+        "Provided 24-hour on-call support for ADO over week-long periods and fixed priority technical issues",
+      ],
+      images: [],
+      technologies: ["Caché ObjectScript"],
+    },
+    {
+      company: "Meditech",
+      period: "2005 - 2008",
+      title: "Development Programmer",
+      achievements: [
+        "Experience in software development life cycle for the Imaging and Therapeutic Services (ITS) module",
+        "Developed projects for requested enhancements and fixed issues",
+        "Created technical specifications and wrote code based on specifications",
+      ],
+      images: [],
+      technologies: ["MIIS", "MAGIC"],
     },
   ];
 
@@ -86,16 +145,12 @@ const Experience = () => {
           <Badge variant="secondary" className="mb-4">
             Experience
           </Badge>
-          <h2 className="text-4xl sm:text-5xl font-bold tracking-tight">
-            Professional Journey
-          </h2>
-          <p className="text-muted-foreground mt-2 sm:mt-4 text-lg">
-            A timeline of my professional growth and key achievements
-          </p>
+          <h2 className="text-4xl sm:text-5xl font-bold tracking-tight">Professional Journey</h2>
+          <p className="text-muted-foreground mt-2 sm:mt-4 text-lg">A timeline of my professional growth and key achievements</p>
         </div>
 
         <div className="relative">
-          {experiences.map((experience, index) => (
+          {work.map((experience, index) => (
             <ExperienceItem key={index} {...experience} />
           ))}
         </div>
