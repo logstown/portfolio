@@ -1,45 +1,50 @@
-import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
 import { cn } from "@/lib/utils";
 import { Download } from "lucide-react";
 import Image from "next/image";
-import { HTMLAttributes } from "react";
 import { GithubLogo } from "./icons";
+import { technologies } from "@/lib/utils";
+import ConvexIcon from "@/public/convex.svg";
 
 const About = () => {
+  // const shuffledTechnologies = shuffleArray(technologies);
+
   return (
     <section id="about" className="relative py-20 px-6">
       <div className="max-w-screen-md mx-auto">
-        <div className="flex flex-col md:flex-row-reverse gap-12">
-          <ProfileImage className="hidden md:block" />
-
-          {/* Content */}
-          <div className="flex-1 md:text-left">
-            <Badge variant="secondary" className="mb-4">
-              About Me
-            </Badge>
-            <ProfileImage className="mt-3 mb-8 block md:hidden" />
-            <h2 className="text-4xl font-bold mb-4 tracking-tight">
-              Passionate about creating impactful web experiences
-            </h2>
-            <p className="text-muted-foreground mb-6 text-justify">
-              With over 5 years of experience in full-stack development, I
-              specialize in building scalable web applications using modern
-              technologies. My expertise includes React, Node.js, and cloud
-              architecture. I&apos;m passionate about creating elegant solutions
-              to complex problems and sharing knowledge with the developer
-              community.
-            </p>
-            <div className="flex flex-wrap gap-4 justify-start">
-              <Button className="rounded-full">
-                <GithubLogo />
-                View Github
-              </Button>
-              <Button variant="outline" className="rounded-full">
-                <Download />
-                Download CV
-              </Button>
-            </div>
+        {/* Content */}
+        <div className="md:text-left">
+          {/* <Badge variant="secondary" className="mb-4">
+            About Me
+          </Badge> */}
+          <h2 className="text-4xl sm:text-5xl font-bold mb-4 tracking-tight text-center">Technologies</h2>
+          <div className="mb-6 flex flex-wrap justify-center gap-6">
+            {technologies.map((technology) => (
+              <div
+                key={technology.name}
+                className={cn(
+                  "flex justify-baseline items-center gap-2 bg-accent rounded-full border border-accent-foreground/30 px-4 py-2 text-lg",
+                  technology.isCurrent && ""
+                )}
+              >
+                {technology.name === "Convex" ? (
+                  <Image src={ConvexIcon} alt="Convex" width={20} height={20} />
+                ) : (
+                  <technology.icon style={{ fill: technology.color }} size={20} />
+                )}
+                {technology.name}
+              </div>
+            ))}
+          </div>
+          <div className="flex flex-wrap gap-4 justify-center">
+            <Button className="rounded-full">
+              <GithubLogo />
+              View Github
+            </Button>
+            <Button variant="outline" className="rounded-full">
+              <Download />
+              Download CV
+            </Button>
           </div>
         </div>
       </div>
@@ -47,14 +52,21 @@ const About = () => {
   );
 };
 
-const ProfileImage = ({
-  className,
-  ...props
-}: HTMLAttributes<HTMLDivElement>) => (
-  <div className={cn("mt-10 w-48 h-48 md:w-64 md:h-64", className)} {...props}>
-    <div className="relative w-full h-full rounded-2xl overflow-hidden bg-accent">
-      <Image src="/placeholder.svg" alt="" className="object-cover" fill />
-    </div>
-  </div>
-);
+function shuffleArray(array: any[]) {
+  let currentIndex = array.length;
+  let randomIndex;
+
+  // While there remain elements to shuffle.
+  while (currentIndex !== 0) {
+    // Pick a remaining element.
+    randomIndex = Math.floor(Math.random() * currentIndex);
+    currentIndex--;
+
+    // And swap it with the current element.
+    [array[currentIndex], array[randomIndex]] = [array[randomIndex], array[currentIndex]];
+  }
+
+  return array;
+}
+
 export default About;
