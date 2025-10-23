@@ -8,9 +8,16 @@ const geistSans = Geist({
   subsets: ["latin"],
 });
 export const metadata: Metadata = {
-  title: "Shadcn UI Portfolio",
-  description:
-    "A beautiful portfolio template built with Shadcn UI, Tailwind CSS 4, and Next.js 15",
+  title: "Logan Joecks",
+  description: "My personal website and portfolio",
+  // icons: {
+  //   icon: "/favicon.ico",
+  // },
+  // openGraph: {
+  //   title: "Logan Joecks",
+  //   description: "My personal website and portfolio",
+  //   images: "/og-image.png",
+  // },
 };
 
 export default function RootLayout({
