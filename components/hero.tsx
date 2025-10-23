@@ -4,6 +4,7 @@ import { Button } from "@/components/ui/button";
 import { cn } from "@/lib/utils";
 import Image from "next/image";
 import { CircleArrowDown, Zap } from "lucide-react";
+import Link from "next/link";
 
 const Hero = () => {
   return (
@@ -26,13 +27,14 @@ const Hero = () => {
           Web Developer
         </Badge>
         <p className="mt-6 text-[17px] md:text-lg">
-          Hey there! I&apos;m a John Doe, a Full Stack Developer who loves building cool and scalable web experiences. From
-          crafting beautiful frontends to powering robust backends, I bring ideas to life with clean code and great design.
-          Let&apos;s create something amazing together! 🚀
+          Hey there! I&apos;m a Boston-based web developer with a passion for building what I want to see in the world. Enterprise
+          web-app developer by day, side-project enthusiast by night 🚀
         </p>
         <div className="mt-12 flex items-center justify-center gap-4">
-          <Button size="lg" className="rounded-full text-base">
-            See What I Do <CircleArrowDown className="ml-2 !h-5.5 !w-5.5" />
+          <Button asChild size="lg" className="rounded-full text-base">
+            <Link href="#tech">
+              See More <CircleArrowDown className="ml-2 !h-5.5 !w-5.5" />
+            </Link>
           </Button>
         </div>
       </div>

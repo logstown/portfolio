@@ -1,46 +1,37 @@
-import { Button } from "@/components/ui/button";
-import { cn } from "@/lib/utils";
-import { Download } from "lucide-react";
 import Image from "next/image";
-import { GithubLogo } from "./icons";
-import { technologies } from "@/lib/utils";
+import { technologies, Technology } from "@/lib/utils";
 import ConvexIcon from "@/public/convex.svg";
-import { Marquee, MarqueeContent, MarqueeFade, MarqueeItem } from "@/components/ui/shadcn-io/marquee";
 import { Tooltip, TooltipTrigger, TooltipContent } from "@/components/ui/tooltip";
+import { TechnologyMarquee } from "./tech-marquee";
 
 const About = () => {
   const shuffledTechnologies = shuffleArray(technologies);
   const currentTechnologies = shuffledTechnologies.filter((technology) => technology.isCurrent);
+  const { frontendTechnologies, backendTechnologies } = technologies.reduce(
+    (acc, technology) => {
+      if (technology.isFrontend) {
+        acc.frontendTechnologies.push(technology);
+      } else {
+        acc.backendTechnologies.push(technology);
+      }
+      return acc;
+    },
+    { frontendTechnologies: [] as Technology[], backendTechnologies: [] as Technology[] }
+  );
 
   return (
-    <section id="about" className="relative py-20 px-6">
+    <section id="tech" className="relative py-20 px-6">
       <div className="max-w-screen-md mx-auto">
         {/* Content */}
-        <div>
-          <h2 className="text-4xl sm:text-5xl font-bold tracking-tight text-center">Technologies</h2>
-          <Marquee className="mt-12">
-            <MarqueeFade side="left" />
-            <MarqueeFade side="right" />
-            <MarqueeContent>
-              {shuffledTechnologies.map((technology) => (
-                <MarqueeItem key={technology.name} className="mx-3">
-                  <div
-                    key={technology.name}
-                    className="flex justify-baseline items-center gap-3 rounded-full bg-accent/70 border border-accent-foreground/10 px-5 py-3 text-2xl"
-                  >
-                    {technology.name === "Convex" ? (
-                      <Image src={ConvexIcon} alt="Convex" width={28} height={28} />
-                    ) : (
-                      <technology.icon style={{ fill: technology.color }} size={28} />
-                    )}
-                    {technology.name}
-                  </div>
-                </MarqueeItem>
-              ))}
-            </MarqueeContent>
-          </Marquee>
-          <div className="flex flex-col items-center justify-center my-16 gap-4">
-            <div className="text-lg font-medium text-muted-foreground">Current Stack:</div>
+        <h2 className="text-4xl sm:text-5xl font-bold tracking-tight text-center">Technologies</h2>
+        <p className="text-muted-foreground mt-2 sm:mt-4 text-lg text-center">Love some -- used them all</p>
+        <div className="p-8 rounded-lg inset-shadow-sm inset-shadow-foreground/20 bg-accent/30 mt-12">
+          <div>
+            <TechnologyMarquee title="Frontend" technologies={frontendTechnologies} direction="left" />
+            <TechnologyMarquee title="Backend" technologies={backendTechnologies} direction="right" className="mt-2" />
+          </div>
+          <div className="flex flex-col items-center justify-center mt-8 gap-4">
+            <div className="text-lg font-medium text-muted-foreground">Current Stack</div>
             <div className="flex flex-wrap gap-1 justify-center">
               {currentTechnologies.map((technology) => (
                 <Tooltip key={technology.name} delayDuration={500}>
@@ -51,9 +42,9 @@ const About = () => {
                       className="hover:scale-125 transition-all duration-100 hover:bg-accent rounded-full p-3"
                     >
                       {technology.name === "Convex" ? (
-                        <Image src={ConvexIcon} alt="Convex" width={36} height={36} />
+                        <Image src={ConvexIcon} alt="Convex" width={48} height={48} />
                       ) : (
-                        <technology.icon style={{ fill: technology.color }} size={36} />
+                        <technology.icon style={{ fill: technology.color }} size={48} />
                       )}
                     </div>
                   </TooltipTrigger>
@@ -61,16 +52,6 @@ const About = () => {
                 </Tooltip>
               ))}
             </div>
-          </div>
-          <div className="flex flex-wrap gap-4 justify-center">
-            <Button className="rounded-full">
-              <GithubLogo />
-              View Github
-            </Button>
-            <Button variant="outline" className="rounded-full">
-              <Download />
-              Download CV
-            </Button>
           </div>
         </div>
       </div>

@@ -6,7 +6,6 @@ import {
   SiDaisyui,
   SiFirebase,
   SiHeroui,
-  SiLodash,
   SiNextdotjs,
   SiPostgresql,
   SiPrisma,
@@ -22,39 +21,46 @@ import {
   SiPrismaHex,
   SiPostgresqlHex,
   SiD3Hex,
-  SiLodashHex,
   SiReactqueryHex,
   SiDaisyuiHex,
   SiAngularHex,
   SiFirebaseHex,
   SiHerouiHex,
   SiShadcnuiHex,
-  SiJavascriptHex,
-  SiJavascript,
   SiPythonHex,
   SiPython,
-  SiCss,
-  SiCssHex,
-  SiHtml5Hex,
-  SiHtml5,
+  SiMaterialdesign,
+  SiMaterialdesignHex,
+  SiVite,
+  SiViteHex,
 } from "@icons-pack/react-simple-icons";
+
+export interface Technology {
+  name: string;
+  icon: React.ElementType;
+  color: string;
+  isCurrent?: boolean;
+  isFrontend?: boolean;
+}
 
 export function cn(...inputs: ClassValue[]) {
   return twMerge(clsx(inputs));
 }
 
-export const technologies = [
+export const technologies: Technology[] = [
   {
     name: "React",
     icon: SiReact,
     color: SiReactHex,
     isCurrent: true,
+    isFrontend: true,
   },
   {
     name: "TypeScript",
     icon: SiTypescript,
     color: SiTypescriptHex,
     isCurrent: true,
+    isFrontend: true,
   },
   {
     name: "Next.js",
@@ -67,6 +73,7 @@ export const technologies = [
     icon: SiTailwindcss,
     color: SiTailwindcssHex,
     isCurrent: true,
+    isFrontend: true,
   },
   {
     name: "Prisma",
@@ -82,28 +89,27 @@ export const technologies = [
     name: "D3.js",
     icon: SiD3,
     color: SiD3Hex,
-  },
-  {
-    name: "Lodash",
-    icon: SiLodash,
-    color: SiLodashHex,
+    isFrontend: true,
   },
   {
     name: "React Query",
     icon: SiReactquery,
     color: SiReactqueryHex,
     isCurrent: true,
+    isFrontend: true,
   },
   {
     name: "DaisyUI",
     icon: SiDaisyui,
     color: SiDaisyuiHex,
     isCurrent: true,
+    isFrontend: true,
   },
   {
     name: "Angular",
     icon: SiAngular,
     color: SiAngularHex,
+    isFrontend: true,
   },
   {
     name: "Firebase",
@@ -120,16 +126,13 @@ export const technologies = [
     name: "HeroUI",
     icon: SiHeroui,
     color: SiHerouiHex,
+    isFrontend: true,
   },
   {
     name: "Shadcn UI",
     icon: SiShadcnui,
     color: SiShadcnuiHex,
-  },
-  {
-    name: "JavaScript",
-    icon: SiJavascript,
-    color: SiJavascriptHex,
+    isFrontend: true,
   },
   {
     name: "Python",
@@ -137,13 +140,15 @@ export const technologies = [
     color: SiPythonHex,
   },
   {
-    name: "CSS",
-    icon: SiCss,
-    color: SiCssHex,
+    name: "Material Design",
+    icon: SiMaterialdesign,
+    color: SiMaterialdesignHex,
+    isFrontend: true,
   },
   {
-    name: "HTML5",
-    icon: SiHtml5,
-    color: SiHtml5Hex,
+    name: "Vite",
+    icon: SiVite,
+    color: SiViteHex,
+    isFrontend: true,
   },
 ];
