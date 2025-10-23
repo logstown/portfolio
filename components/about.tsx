@@ -59,7 +59,7 @@ const About = () => {
   );
 };
 
-function shuffleArray(array: any[]) {
+function shuffleArray(array: Technology[]) {
   let currentIndex = array.length;
   let randomIndex;
 
