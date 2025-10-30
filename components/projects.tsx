@@ -20,12 +20,14 @@ const ProjectCard = ({ title, description, image, technologies, liveUrl, githubU
         <p className="text-muted-foreground mb-4">{description}</p>
 
         {/* Technologies */}
-        <div className="flex flex-1 flex-wrap gap-2 mb-6">
-          {technologies.map((tech) => (
-            <Badge key={tech} variant="secondary" className="rounded-full">
-              {tech}
-            </Badge>
-          ))}
+        <div className="flex-1">
+          <div className="flex flex-wrap gap-2 mb-6">
+            {technologies.map((tech) => (
+              <Badge key={tech} variant="secondary" className="rounded-full">
+                {tech}
+              </Badge>
+            ))}
+          </div>
         </div>
 
         {/* Actions */}
