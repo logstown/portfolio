@@ -24,7 +24,10 @@ const About = () => {
       <div className="max-w-screen-md mx-auto">
         {/* Content */}
         <h2 className="text-4xl sm:text-5xl font-bold tracking-tight text-center">Technologies</h2>
-        <p className="text-muted-foreground mt-2 sm:mt-4 text-lg text-center">Love some -- used them all</p>
+        <p className="text-muted-foreground mt-2 sm:mt-4 text-lg text-center">
+          Love some
+          <span className="font-bold ml-2">Skilled in all</span>
+        </p>
         <div className="p-8 rounded-lg inset-shadow-sm inset-shadow-foreground/20 bg-accent/30 mt-12">
           <div>
             <TechnologyMarquee title="Frontend" technologies={frontendTechnologies} direction="left" />
