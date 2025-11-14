@@ -8,7 +8,7 @@ import { ProjectCardProps, projects } from "@/lib/user-data";
 
 const ProjectCard = ({ title, description, image, technologies, liveUrl, githubUrl }: ProjectCardProps) => {
   return (
-    <div className="group relative flex flex-col overflow-hidden rounded-xl border border-accent transition-all hover:border-primary/50">
+    <div className="group relative flex flex-col overflow-hidden rounded-xl border border-accent transition-all hover:shadow-lg">
       {/* Project Image */}
       <div className="relative h-64 overflow-hidden bg-accent">
         <Image src={image} alt={title} className="object-cover transition-transform duration-300 group-hover:scale-105" fill />
