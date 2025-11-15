@@ -75,6 +75,7 @@ const Projects = () => {
           ))}
         </div>
       </div>
+      <p className="text-muted-foreground text-center mt-10">Wow, I really have a specific taste in color scheme...</p>
     </section>
   );
 };
