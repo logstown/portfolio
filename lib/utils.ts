@@ -1,44 +1,9 @@
 import { clsx, type ClassValue } from "clsx";
 import { twMerge } from "tailwind-merge";
-import {
-  SiAngular,
-  SiD3,
-  SiDaisyui,
-  SiFirebase,
-  SiHeroui,
-  SiNextdotjs,
-  SiPostgresql,
-  SiPrisma,
-  SiReact,
-  SiReactHex,
-  SiReactquery,
-  SiShadcnui,
-  SiTailwindcss,
-  SiTypescript,
-  SiTypescriptHex,
-  SiNextdotjsHex,
-  SiTailwindcssHex,
-  SiPrismaHex,
-  SiPostgresqlHex,
-  SiD3Hex,
-  SiReactqueryHex,
-  SiDaisyuiHex,
-  SiAngularHex,
-  SiFirebaseHex,
-  SiHerouiHex,
-  SiShadcnuiHex,
-  SiPythonHex,
-  SiPython,
-  SiMaterialdesign,
-  SiMaterialdesignHex,
-  SiVite,
-  SiViteHex,
-} from "@icons-pack/react-simple-icons";
 
 export interface Technology {
   name: string;
-  icon: React.ElementType;
-  color: string;
+  icon: string;
   isCurrent?: boolean;
   isFrontend?: boolean;
 }
@@ -50,105 +15,93 @@ export function cn(...inputs: ClassValue[]) {
 export const technologies: Technology[] = [
   {
     name: "React",
-    icon: SiReact,
-    color: SiReactHex,
+    icon: "skill-icons:react-dark",
     isCurrent: true,
     isFrontend: true,
   },
   {
     name: "TypeScript",
-    icon: SiTypescript,
-    color: SiTypescriptHex,
+    icon: "skill-icons:typescript",
     isCurrent: true,
     isFrontend: true,
   },
   {
     name: "Next.js",
-    icon: SiNextdotjs,
-    color: SiNextdotjsHex,
-    isCurrent: true,
+    icon: "skill-icons:nextjs-light",
   },
   {
     name: "Tailwind CSS",
-    icon: SiTailwindcss,
-    color: SiTailwindcssHex,
+    icon: "skill-icons:tailwindcss-dark",
     isCurrent: true,
     isFrontend: true,
   },
   {
     name: "Prisma",
-    icon: SiPrisma,
-    color: SiPrismaHex,
+    icon: "skill-icons:prisma",
   },
   {
     name: "PostgreSQL",
-    icon: SiPostgresql,
-    color: SiPostgresqlHex,
+    icon: "skill-icons:postgresql-light",
   },
   {
     name: "D3.js",
-    icon: SiD3,
-    color: SiD3Hex,
+    icon: "skill-icons:d3-dark",
     isFrontend: true,
   },
   {
     name: "React Query",
-    icon: SiReactquery,
-    color: SiReactqueryHex,
+    icon: "logos:react-query-icon",
     isCurrent: true,
     isFrontend: true,
   },
   {
     name: "DaisyUI",
-    icon: SiDaisyui,
-    color: SiDaisyuiHex,
+    icon: "logos:daisyui-icon",
     isCurrent: true,
     isFrontend: true,
   },
   {
     name: "Angular",
-    icon: SiAngular,
-    color: SiAngularHex,
+    icon: "skill-icons:angular-dark",
     isFrontend: true,
   },
   {
     name: "Firebase",
-    icon: SiFirebase,
-    color: SiFirebaseHex,
+    icon: "logos:firebase-icon",
   },
   {
     name: "Convex",
-    icon: SiFirebase,
-    color: "#FFCA28",
+    icon: "bxl:convex",
     isCurrent: true,
   },
   {
     name: "HeroUI",
-    icon: SiHeroui,
-    color: SiHerouiHex,
+    icon: "simple-icons:heroui",
     isFrontend: true,
   },
   {
     name: "Shadcn UI",
-    icon: SiShadcnui,
-    color: SiShadcnuiHex,
+    icon: "simple-icons:shadcnui",
     isFrontend: true,
   },
   {
     name: "Python",
-    icon: SiPython,
-    color: SiPythonHex,
+    icon: "skill-icons:python-light",
   },
   {
-    name: "Material Design",
-    icon: SiMaterialdesign,
-    color: SiMaterialdesignHex,
+    name: "Material UI",
+    icon: "devicon:materialui",
     isFrontend: true,
   },
   {
     name: "Vite",
-    icon: SiVite,
-    color: SiViteHex,
+    icon: "skill-icons:vite-dark",
     isFrontend: true,
+  },
+  {
+    name: "Tanstack Start",
+    icon: "simple-icons:tanstack",
+    isFrontend: true,
+    isCurrent: true,
   },
 ];

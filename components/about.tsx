@@ -1,8 +1,9 @@
-import Image from "next/image";
 import { technologies, Technology } from "@/lib/utils";
-import ConvexIcon from "@/public/convex.svg";
 import { Tooltip, TooltipTrigger, TooltipContent } from "@/components/ui/tooltip";
 import { TechnologyMarquee } from "./tech-marquee";
+import { TechnologyIcon } from "./technology-icon";
+import Image from "next/image";
+import ConvexIcon from "@/public/convex.svg";
 
 const About = () => {
   const shuffledTechnologies = shuffleArray(technologies);
@@ -16,7 +17,7 @@ const About = () => {
       }
       return acc;
     },
-    { frontendTechnologies: [] as Technology[], backendTechnologies: [] as Technology[] }
+    { frontendTechnologies: [] as Technology[], backendTechnologies: [] as Technology[] },
   );
 
   return (
@@ -47,7 +48,7 @@ const About = () => {
                       {technology.name === "Convex" ? (
                         <Image src={ConvexIcon} alt="Convex" width={48} height={48} />
                       ) : (
-                        <technology.icon style={{ fill: technology.color }} size={48} />
+                        <TechnologyIcon technology={technology} iconSize={48} />
                       )}
                     </div>
                   </TooltipTrigger>
